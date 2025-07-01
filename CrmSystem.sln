@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrmSystem", "CrmSystem\CrmSystem.csproj", "{4150871B-7266-43B2-8EB8-D020F8B1113F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KobzarTest", "KobzarTest\KobzarTest.csproj", "{92409D39-5C1A-43EA-ACA8-AA86ED1BFADC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4150871B-7266-43B2-8EB8-D020F8B1113F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4150871B-7266-43B2-8EB8-D020F8B1113F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4150871B-7266-43B2-8EB8-D020F8B1113F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92409D39-5C1A-43EA-ACA8-AA86ED1BFADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92409D39-5C1A-43EA-ACA8-AA86ED1BFADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92409D39-5C1A-43EA-ACA8-AA86ED1BFADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92409D39-5C1A-43EA-ACA8-AA86ED1BFADC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
