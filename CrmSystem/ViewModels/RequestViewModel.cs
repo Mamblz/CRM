@@ -40,12 +40,15 @@ namespace CrmSystem.ViewModels
             if (ticket == null)
                 throw new ArgumentNullException(nameof(ticket));
 
+            ticket.Id = 0;
+
             _dbContext.Tickets.Add(ticket);
             _dbContext.SaveChanges();
 
             Tickets.Add(ticket);
             ApplyFilter();
         }
+
 
         public bool DeleteTicket(Ticket ticket)
         {
@@ -81,5 +84,35 @@ namespace CrmSystem.ViewModels
                 FilteredTickets.Add(ticket);
             }
         }
+
+        public void UpdateTicket(Ticket updatedTicket)
+        {
+            if (updatedTicket == null) return;
+
+            // Обновляем в БД
+            var existing = _dbContext.Tickets.Find(updatedTicket.Id);
+            if (existing == null) return;
+
+            existing.Title = updatedTicket.Title;
+            existing.Description = updatedTicket.Description;
+            existing.Status = updatedTicket.Status;
+            existing.Priority = updatedTicket.Priority;
+
+            _dbContext.SaveChanges();
+
+            // Обновляем в ObservableCollection
+            var inList = Tickets.FirstOrDefault(t => t.Id == updatedTicket.Id);
+            if (inList != null)
+            {
+                inList.Title = updatedTicket.Title;
+                inList.Description = updatedTicket.Description;
+                inList.Status = updatedTicket.Status;
+                inList.Priority = updatedTicket.Priority;
+            }
+
+            ApplyFilter();
+        }
+
+
     }
 }

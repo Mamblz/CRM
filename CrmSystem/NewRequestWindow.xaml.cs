@@ -105,7 +105,9 @@ namespace CrmSystem.Views
                     _editingTicket.Priority = (Priority)PriorityComboBox.SelectedItem;
 
                     _dbContext.Tickets.Update(_editingTicket);
+                    NewTicket = _editingTicket; // <<< ЭТО ОБЯЗАТЕЛЬНО!
                 }
+
 
                 await _dbContext.SaveChangesAsync();
 

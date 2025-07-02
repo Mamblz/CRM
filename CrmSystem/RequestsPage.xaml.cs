@@ -90,7 +90,7 @@ namespace CrmSystem.Views
 
                 if (editWindow.ShowDialog() == true)
                 {
-                    _viewModel.LoadTicketsFromDb();
+                    _viewModel.UpdateTicket(editWindow.NewTicket);
                     MessageBox.Show($"Заявка '{selectedTicket.Title}' успешно обновлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
