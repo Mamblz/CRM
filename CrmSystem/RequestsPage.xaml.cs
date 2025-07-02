@@ -43,24 +43,35 @@ namespace CrmSystem.Views
 
         private void StatusFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_viewModel == null || StatusFilterComboBox == null)
+                return;
+
             if (StatusFilterComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
-                var statusText = selectedItem.Content.ToString();
+                var statusText = selectedItem.Content?.ToString();
 
-                _viewModel.SelectedStatus = statusText switch
+                if (string.IsNullOrWhiteSpace(statusText))
                 {
-                    "Все статусы" => null,
-                    "Новая" => TicketStatus.Новый,
-                    "В процессе" => TicketStatus.ВПроцессе,
-                    "В ожидании" => TicketStatus.ВОжидании,
-                    "Завершена" => TicketStatus.Завершён,
-                    "Отменена" => TicketStatus.Отменён,
-                    _ => null
-                };
+                    _viewModel.SelectedStatus = null;
+                }
+                else
+                {
+                    _viewModel.SelectedStatus = statusText switch
+                    {
+                        "Все статусы" => null,
+                        "Новая" => TicketStatus.Новый,
+                        "В процессе" => TicketStatus.ВПроцессе,
+                        "В ожидании" => TicketStatus.ВОжидании,
+                        "Завершена" => TicketStatus.Завершён,
+                        "Отменена" => TicketStatus.Отменён,
+                        _ => null
+                    };
+                }
 
                 _viewModel.ApplyFilter();
             }
         }
+
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
